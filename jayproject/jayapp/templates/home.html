@@ -1,0 +1,63 @@
+{%extends "base1.html" %}
+
+    {% block content %}
+    <ul>
+      <li><a class="active">Home</a></li>
+      <li><a>Welcome <b> {{ first_name }} </b> </a></li>
+      <li style="float:right"><a href="/jayapp/logout/">Logout from <b> {{ first_name }} </b> </a>
+    </ul>
+<br/>
+
+<div>
+      <p>Add to your Todo List:</p>
+        <form action="/addTodoItem/" method = "post">
+            {% csrf_token %}
+            <input type="text" class="cont" name="content" placeholder="Add New..." required>
+            <input class="buttonAdd" type="submit" value="Add">
+        </form>
+
+        <p>
+            My Todo List:
+        </p>
+        
+            <ol>
+                {% for i in all_items %}
+                <li>
+                    <table>
+                        {{ i.content }}
+                        <form action="/deleteTodoItem/{{i.id}}/" method = "POST">
+                            {% csrf_token %}
+                            <input class="buttonDelete" type="submit" value="Delete">
+                        </form>&nbsp;
+                        <form action="/completedTodoItem/{{i.id}}/" method = "POST">
+                            {% csrf_token %}
+                            <input class="buttonComplete" type="submit" value="Complete">
+                        </form>
+                        {{i.date_created}}
+                    </table>
+                    <br/>
+                </li>
+                {% endfor %}
+              </ol>
+        
+        <p>
+            My Completed Tasks List:
+        </p>
+
+        <ol>
+            {% for i in completed_items %}
+            <li>
+                <table>
+                    {{ i.content }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{i.date_completed}}
+                    <form action="/deleteTodoItem/{{i.id}}/" method = "POST">
+                        {% csrf_token %}
+                        <input class="buttonDelete" type="submit" value="Delete">
+                    </form>            
+                </table>
+                <br/>
+            </li>
+            {% endfor %}
+          </ol>
+    </div>
+    {% endblock %}

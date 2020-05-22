@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: darkred;
+}
+
+div {
+  background-color: #D2B48C;
+  width: 500px;
+  border: 5px solid #191970;
+  border-radius: 12px;
+  padding: 50px;
+  margin-left: 470px;
+  font-size: large;
+  font: bold;
+  box-shadow: 5px 10px #888888;
+}
+
+.cont {
+  padding: 5px;
+  border: small;
+  border-color: #555555;
+}
+
+.buttonAdd{
+  color: white;
+  background-color: #555555;
+  border: small;
+  border-color: #555555;
+}
+
+.buttonDelete {
+  color: white;
+  background-color: #f44336;
+  border: small;
+  border-color: #f44336;
+}
+
+.buttonComplete {
+  color: white;
+  background-color: #4CAF50;
+  border: small;
+  border-color: #4CAF50;
+}
+
+</style>
+</head>
+<body style="background-color:#FFFFE0;">
+        {% block content %}
+        {% endblock %}
+
+</body>
+</html>

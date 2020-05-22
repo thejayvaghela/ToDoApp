@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+    
+        {% if form.errors %}
+            <p class="error"> Invalid Username or Password </p>
+        {% endif %}
+
+        <ul>
+            <li><a class="active" href="/jayapp/Signup/">Signup</a></li>
+          </ul>
+      <br/>    
+          <h3>
+        <form action="/myauth/" method = "POST">
+            {% csrf_token %}
+            <label for="your-email">Email : </label>
+            <input type="text" name = "your-email" value = "" id="your-email">
+            <label for="password"> Password:</label>
+            <input type="password" name="password" value="" id="password">
+            <input type="submit" value="Login"/>
+        </form>
+
+    
+            <p>New User?</p>
+        
+            <p> Click the above Signup button to register yourself. </p>
+
+        </h3>
+    {% endblock %}
